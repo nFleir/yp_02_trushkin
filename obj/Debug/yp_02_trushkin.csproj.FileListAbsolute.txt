@@ -1,0 +1,15 @@
+C:\Users\nikit\source\repos\yp_02_trushkin\yp_02_trushkin\bin\Debug\yp_02_trushkin.exe.config
+C:\Users\nikit\source\repos\yp_02_trushkin\yp_02_trushkin\bin\Debug\yp_02_trushkin.exe
+C:\Users\nikit\source\repos\yp_02_trushkin\yp_02_trushkin\bin\Debug\yp_02_trushkin.pdb
+C:\Users\nikit\source\repos\yp_02_trushkin\yp_02_trushkin\obj\Debug\yp_02_trushkin.csproj.AssemblyReference.cache
+C:\Users\nikit\source\repos\yp_02_trushkin\yp_02_trushkin\obj\Debug\MainWindow.g.cs
+C:\Users\nikit\source\repos\yp_02_trushkin\yp_02_trushkin\obj\Debug\App.g.cs
+C:\Users\nikit\source\repos\yp_02_trushkin\yp_02_trushkin\obj\Debug\yp_02_trushkin_MarkupCompile.cache
+C:\Users\nikit\source\repos\yp_02_trushkin\yp_02_trushkin\obj\Debug\yp_02_trushkin_MarkupCompile.lref
+C:\Users\nikit\source\repos\yp_02_trushkin\yp_02_trushkin\obj\Debug\MainWindow.baml
+C:\Users\nikit\source\repos\yp_02_trushkin\yp_02_trushkin\obj\Debug\yp_02_trushkin.g.resources
+C:\Users\nikit\source\repos\yp_02_trushkin\yp_02_trushkin\obj\Debug\yp_02_trushkin.Properties.Resources.resources
+C:\Users\nikit\source\repos\yp_02_trushkin\yp_02_trushkin\obj\Debug\yp_02_trushkin.csproj.GenerateResource.cache
+C:\Users\nikit\source\repos\yp_02_trushkin\yp_02_trushkin\obj\Debug\yp_02_trushkin.csproj.CoreCompileInputs.cache
+C:\Users\nikit\source\repos\yp_02_trushkin\yp_02_trushkin\obj\Debug\yp_02_trushkin.exe
+C:\Users\nikit\source\repos\yp_02_trushkin\yp_02_trushkin\obj\Debug\yp_02_trushkin.pdb
