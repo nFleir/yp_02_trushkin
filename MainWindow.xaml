@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:yp_02_trushkin"
         mc:Ignorable="d"
         Title="Nikito - Сервис объявлений" 
-        Height="720" Width="1280" ResizeMode="CanResize">
+        Height="720" Width="1280" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
