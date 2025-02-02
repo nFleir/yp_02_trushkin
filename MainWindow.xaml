@@ -5,8 +5,107 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:yp_02_trushkin"
         mc:Ignorable="d"
-        Title="MainWindow" Height="720" Width="1280">
+        Title="Nikito - Сервис объявлений" 
+        Height="720" Width="1280" ResizeMode="CanResize">
     <Grid>
-        <Image Source="logo1.png" Margin="-13,0,920,565" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- картинка с кнопкапи-->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="1000,0,0,0" >
+            <Image Source="logo1.png" Height="100" HorizontalAlignment="Right"/>
+            <Button x:Name="EnterBtn" Width="50" Height="50" Background="Transparent" Click="BtnLogin_Click">
+                <Image Source="profile.png" Width="50"/>
+            </Button>
+            <Button x:Name="ProfileBtn" Width="50" Height="50" Background="Transparent" Visibility="Collapsed" Click="BtnProfile_Click">
+                <Image Source="profile.png" Width="50"/>
+            </Button>
+        </StackPanel>
+        
+        
+        <StackPanel Grid.Row="0" Margin="5">
+            <TextBox Name="SearchTextBox"  
+                     Margin="5" Padding="3" Width="300" HorizontalAlignment="Left"
+                      PreviewMouseDown="SearchTextBox_PreviewMouseDown" ToolTip="Поиск по объявлениям..."/>
+            
+            
+            <StackPanel Orientation="Horizontal" Margin="0 0 600 0">
+                <TextBlock Text="Город" />
+                <ComboBox Name="CityComboBox"  
+                           Margin="5" Width="150"/>
+                <TextBlock Text="Категория" />
+                <ComboBox Name="CategoryComboBox" 
+                           Margin="5" Width="150"/>
+                <TextBlock Text="Тип" />
+                <ComboBox Name="TypeComboBox" 
+                           Margin="5" Width="150"/>
+            </StackPanel>
+        </StackPanel>
+
+
+        <StackPanel Grid.Row="1">
+            <ListView x:Name="ListAds"
+              ScrollViewer.VerticalScrollBarVisibility="Auto"
+              Height="550" Width="1240"
+              Padding="10">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="3" HorizontalAlignment="Stretch"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Margin="10" Padding="10"
+                        BorderThickness="1" BorderBrush="LightGray"
+                        CornerRadius="10" Background="White"
+                        Height="300" Width="250">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="8" ShadowDepth="2" Opacity="0.2"/>
+                            </Border.Effect>
+
+                            <StackPanel HorizontalAlignment="Center">
+                                <Image Width="150" Height="150" Stretch="UniformToFill"
+                               Margin="0 5 0 10" HorizontalAlignment="Center">
+                                    <Image.Source>
+                                        <Binding Path="ad_image">
+                                            <Binding.TargetNullValue>
+                                                <ImageSource>logo1.png</ImageSource>
+                                            </Binding.TargetNullValue>
+                                        </Binding>
+                                    </Image.Source>
+                                </Image>
+
+                                <TextBlock Text="{Binding title}"
+                                   FontSize="16" FontWeight="Bold"
+                                   TextAlignment="Center" TextWrapping="Wrap"
+                                   Margin="5 2 5 0"/>
+
+                                <TextBlock Text="{Binding ad_price, StringFormat={}{0} ₽}"
+                                   FontSize="16" FontWeight="Bold"
+                                   Foreground="#2E7D32" TextAlignment="Center"
+                                   Margin="5 2 5 0"/>
+
+                                <TextBlock Text="{Binding cities.city_name}"
+                                   FontSize="14" Foreground="Gray"
+                                   TextAlignment="Center" Margin="5 0"/>
+
+                                <TextBlock Text="{Binding ad_types.ad_type_name}"
+                                   FontSize="14" Foreground="Gray"
+                                   TextAlignment="Center"/>
+
+                                <TextBlock Text="{Binding users.first_name}"
+                                   FontSize="14" Foreground="Gray"
+                                   TextAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+
+
+        <Frame Name="MainFrame" Grid.RowSpan="2" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

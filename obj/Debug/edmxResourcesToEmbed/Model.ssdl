@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище NikitoModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ad_categories">
+    <Key>
+      <PropertyRef Name="ad_category_id" />
+    </Key>
+    <Property Name="ad_category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad_category_name" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ad_statuses">
+    <Key>
+      <PropertyRef Name="ad_status_id" />
+    </Key>
+    <Property Name="ad_status_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad_status_name" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ad_types">
+    <Key>
+      <PropertyRef Name="ad_type_id" />
+    </Key>
+    <Property Name="ad_type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad_type_name" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ads">
+    <Key>
+      <PropertyRef Name="ad_id" />
+    </Key>
+    <Property Name="ad_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="publish_date" Type="datetime" Nullable="false" />
+    <Property Name="city_id" Type="int" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="ad_category_id" Type="int" Nullable="false" />
+    <Property Name="ad_type_id" Type="int" Nullable="false" />
+    <Property Name="ad_status_id" Type="int" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="description" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="ad_price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="ad_image" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="cities">
+    <Key>
+      <PropertyRef Name="city_id" />
+    </Key>
+    <Property Name="city_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="city_name" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="login" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="first_name" Type="nvarchar" MaxLength="70" />
+    <Property Name="last_name" Type="nvarchar" MaxLength="70" />
+    <Property Name="second_name" Type="nvarchar" MaxLength="70" />
+    <Property Name="profit" Type="decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <Association Name="FK__ads__ad_category__4CA06362">
+    <End Role="ad_categories" Type="Self.ad_categories" Multiplicity="1" />
+    <End Role="ads" Type="Self.ads" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ad_categories">
+        <PropertyRef Name="ad_category_id" />
+      </Principal>
+      <Dependent Role="ads">
+        <PropertyRef Name="ad_category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ads__ad_status_i__4E88ABD4">
+    <End Role="ad_statuses" Type="Self.ad_statuses" Multiplicity="1" />
+    <End Role="ads" Type="Self.ads" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ad_statuses">
+        <PropertyRef Name="ad_status_id" />
+      </Principal>
+      <Dependent Role="ads">
+        <PropertyRef Name="ad_status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ads__ad_type_id__4D94879B">
+    <End Role="ad_types" Type="Self.ad_types" Multiplicity="1" />
+    <End Role="ads" Type="Self.ads" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ad_types">
+        <PropertyRef Name="ad_type_id" />
+      </Principal>
+      <Dependent Role="ads">
+        <PropertyRef Name="ad_type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ads__city_id__4AB81AF0">
+    <End Role="cities" Type="Self.cities" Multiplicity="1" />
+    <End Role="ads" Type="Self.ads" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cities">
+        <PropertyRef Name="city_id" />
+      </Principal>
+      <Dependent Role="ads">
+        <PropertyRef Name="city_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ads__user_id__4BAC3F29">
+    <End Role="users" Type="Self.users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ads" Type="Self.ads" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="ads">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище NikitoModelContainer">
+    <EntitySet Name="ad_categories" EntityType="Self.ad_categories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ad_statuses" EntityType="Self.ad_statuses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ad_types" EntityType="Self.ad_types" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ads" EntityType="Self.ads" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cities" EntityType="Self.cities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ads__ad_category__4CA06362" Association="Self.FK__ads__ad_category__4CA06362">
+      <End Role="ad_categories" EntitySet="ad_categories" />
+      <End Role="ads" EntitySet="ads" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ads__ad_status_i__4E88ABD4" Association="Self.FK__ads__ad_status_i__4E88ABD4">
+      <End Role="ad_statuses" EntitySet="ad_statuses" />
+      <End Role="ads" EntitySet="ads" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ads__ad_type_id__4D94879B" Association="Self.FK__ads__ad_type_id__4D94879B">
+      <End Role="ad_types" EntitySet="ad_types" />
+      <End Role="ads" EntitySet="ads" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ads__city_id__4AB81AF0" Association="Self.FK__ads__city_id__4AB81AF0">
+      <End Role="cities" EntitySet="cities" />
+      <End Role="ads" EntitySet="ads" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ads__user_id__4BAC3F29" Association="Self.FK__ads__user_id__4BAC3F29">
+      <End Role="users" EntitySet="users" />
+      <End Role="ads" EntitySet="ads" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

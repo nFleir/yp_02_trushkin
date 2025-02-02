@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="yp2_nikitoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C_user_">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Advertisement" Relationship="Self.FK__advertise__user___48CFD27E" FromRole="C_user_" ToRole="Advertisement" />
+  </EntityType>
+  <EntityType Name="Advertisement">
+    <Key>
+      <PropertyRef Name="AdvertisementId" />
+    </Key>
+    <Property Name="AdvertisementId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <Property Name="CityId" Type="Int32" Nullable="false" />
+    <Property Name="TypeId" Type="Int32" Nullable="false" />
+    <Property Name="StatusId" Type="Int32" Nullable="false" />
+    <Property Name="ImageData" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="C_user_" Relationship="Self.FK__advertise__user___48CFD27E" FromRole="Advertisement" ToRole="C_user_" />
+    <NavigationProperty Name="Category" Relationship="Self.FK__advertise__categ__49C3F6B7" FromRole="Advertisement" ToRole="Category" />
+    <NavigationProperty Name="City" Relationship="Self.FK__advertise__city___4AB81AF0" FromRole="Advertisement" ToRole="City" />
+    <NavigationProperty Name="AdvertisementStatus" Relationship="Self.FK__advertise__statu__4CA06362" FromRole="Advertisement" ToRole="AdvertisementStatus" />
+    <NavigationProperty Name="AdvertisementType" Relationship="Self.FK__advertise__type___4BAC3F29" FromRole="Advertisement" ToRole="AdvertisementType" />
+  </EntityType>
+  <EntityType Name="AdvertisementStatus">
+    <Key>
+      <PropertyRef Name="StatusId" />
+    </Key>
+    <Property Name="StatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Advertisement" Relationship="Self.FK__advertise__statu__4CA06362" FromRole="AdvertisementStatus" ToRole="Advertisement" />
+  </EntityType>
+  <EntityType Name="AdvertisementType">
+    <Key>
+      <PropertyRef Name="TypeId" />
+    </Key>
+    <Property Name="TypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Advertisement" Relationship="Self.FK__advertise__type___4BAC3F29" FromRole="AdvertisementType" ToRole="Advertisement" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Advertisement" Relationship="Self.FK__advertise__categ__49C3F6B7" FromRole="Category" ToRole="Advertisement" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityId" />
+    </Key>
+    <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Advertisement" Relationship="Self.FK__advertise__city___4AB81AF0" FromRole="City" ToRole="Advertisement" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__advertise__user___48CFD27E">
+    <End Role="C_user_" Type="Self.C_user_" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Advertisement" Type="Self.Advertisement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="C_user_">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Advertisement">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__advertise__categ__49C3F6B7">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Advertisement" Type="Self.Advertisement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="Advertisement">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__advertise__city___4AB81AF0">
+    <End Role="City" Type="Self.City" Multiplicity="1" />
+    <End Role="Advertisement" Type="Self.Advertisement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="Advertisement">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__advertise__statu__4CA06362">
+    <End Role="AdvertisementStatus" Type="Self.AdvertisementStatus" Multiplicity="1" />
+    <End Role="Advertisement" Type="Self.Advertisement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AdvertisementStatus">
+        <PropertyRef Name="StatusId" />
+      </Principal>
+      <Dependent Role="Advertisement">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__advertise__type___4BAC3F29">
+    <End Role="AdvertisementType" Type="Self.AdvertisementType" Multiplicity="1" />
+    <End Role="Advertisement" Type="Self.Advertisement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AdvertisementType">
+        <PropertyRef Name="TypeId" />
+      </Principal>
+      <Dependent Role="Advertisement">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C_user_" EntityType="Self.C_user_" />
+    <EntitySet Name="Advertisement" EntityType="Self.Advertisement" />
+    <EntitySet Name="AdvertisementStatus" EntityType="Self.AdvertisementStatus" />
+    <EntitySet Name="AdvertisementType" EntityType="Self.AdvertisementType" />
+    <EntitySet Name="Category" EntityType="Self.Category" />
+    <EntitySet Name="City" EntityType="Self.City" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK__advertise__user___48CFD27E" Association="Self.FK__advertise__user___48CFD27E">
+      <End Role="C_user_" EntitySet="C_user_" />
+      <End Role="Advertisement" EntitySet="Advertisement" />
+    </AssociationSet>
+    <AssociationSet Name="FK__advertise__categ__49C3F6B7" Association="Self.FK__advertise__categ__49C3F6B7">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Advertisement" EntitySet="Advertisement" />
+    </AssociationSet>
+    <AssociationSet Name="FK__advertise__city___4AB81AF0" Association="Self.FK__advertise__city___4AB81AF0">
+      <End Role="City" EntitySet="City" />
+      <End Role="Advertisement" EntitySet="Advertisement" />
+    </AssociationSet>
+    <AssociationSet Name="FK__advertise__statu__4CA06362" Association="Self.FK__advertise__statu__4CA06362">
+      <End Role="AdvertisementStatus" EntitySet="AdvertisementStatus" />
+      <End Role="Advertisement" EntitySet="Advertisement" />
+    </AssociationSet>
+    <AssociationSet Name="FK__advertise__type___4BAC3F29" Association="Self.FK__advertise__type___4BAC3F29">
+      <End Role="AdvertisementType" EntitySet="AdvertisementType" />
+      <End Role="Advertisement" EntitySet="Advertisement" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

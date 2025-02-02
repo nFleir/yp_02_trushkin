@@ -1,0 +1,30 @@
+﻿<Page x:Class="yp_02_trushkin.Account.Autorization"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:yp_02_trushkin.Account"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1280"
+      Title="Autorization"  Background="White">
+
+    <Grid>
+
+        <StackPanel Orientation="Vertical" Width="707" Height="360" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,200,0,0">
+            <TextBlock Text="Авторизация" Style="{StaticResource TextBlocks}" FontSize="24" FontWeight="Bold" Foreground="DarkSlateGray" 
+            HorizontalAlignment="Center" Margin="0,0,0,10"/>
+            <TextBlock Text="Логин" Height="44" Width="344" FontSize="24" Style="{StaticResource TextBlocks}"/>
+            <TextBox Name="Login_Box"  
+              Width="350" Height="30" Margin="0,10,0,10" Style="{StaticResource TextBox}" />
+
+            <TextBlock Text="Пароль" Height="44" Width="344" FontSize="24" Style="{StaticResource TextBlocks}"/>
+
+            <PasswordBox Name="Password_Box"  Width="350" Height="30" Margin="0,0,0,10" 
+                       VerticalContentAlignment="Center" Style="{StaticResource PasswordBoxes}"/>
+
+            <Button x:Name="Enter_Btn" Content="Войти" Width="350" Background="Wheat" Height="62" Style="{StaticResource Buttons}" Click="Enter_Btn_Click" FontSize="24"  FontWeight="Bold" Margin="0 0 0 10"/>
+            <Button x:Name="Reg_Btn" Content="Регистрация" Width="350" Background="Wheat" Height="62" Style="{StaticResource Buttons}" Click="Reg_Btn_Click" FontSize="24"  FontWeight="Bold"/>
+        </StackPanel>
+        <Frame x:Name="AutorizFrame"/>
+    </Grid>
+</Page>

@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NikitoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ad_categories">
+    <Key>
+      <PropertyRef Name="ad_category_id" />
+    </Key>
+    <Property Name="ad_category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ad_category_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ads" Relationship="Self.FK__ads__ad_category__4CA06362" FromRole="ad_categories" ToRole="ads" />
+  </EntityType>
+  <EntityType Name="ad_statuses">
+    <Key>
+      <PropertyRef Name="ad_status_id" />
+    </Key>
+    <Property Name="ad_status_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ad_status_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ads" Relationship="Self.FK__ads__ad_status_i__4E88ABD4" FromRole="ad_statuses" ToRole="ads" />
+  </EntityType>
+  <EntityType Name="ad_types">
+    <Key>
+      <PropertyRef Name="ad_type_id" />
+    </Key>
+    <Property Name="ad_type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ad_type_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ads" Relationship="Self.FK__ads__ad_type_id__4D94879B" FromRole="ad_types" ToRole="ads" />
+  </EntityType>
+  <EntityType Name="ads">
+    <Key>
+      <PropertyRef Name="ad_id" />
+    </Key>
+    <Property Name="ad_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="publish_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="city_id" Type="Int32" Nullable="false" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="ad_category_id" Type="Int32" Nullable="false" />
+    <Property Name="ad_type_id" Type="Int32" Nullable="false" />
+    <Property Name="ad_status_id" Type="Int32" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ad_price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="ad_image" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ad_categories" Relationship="Self.FK__ads__ad_category__4CA06362" FromRole="ads" ToRole="ad_categories" />
+    <NavigationProperty Name="ad_statuses" Relationship="Self.FK__ads__ad_status_i__4E88ABD4" FromRole="ads" ToRole="ad_statuses" />
+    <NavigationProperty Name="ad_types" Relationship="Self.FK__ads__ad_type_id__4D94879B" FromRole="ads" ToRole="ad_types" />
+    <NavigationProperty Name="cities" Relationship="Self.FK__ads__city_id__4AB81AF0" FromRole="ads" ToRole="cities" />
+    <NavigationProperty Name="users" Relationship="Self.FK__ads__user_id__4BAC3F29" FromRole="ads" ToRole="users" />
+  </EntityType>
+  <EntityType Name="cities">
+    <Key>
+      <PropertyRef Name="city_id" />
+    </Key>
+    <Property Name="city_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="city_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ads" Relationship="Self.FK__ads__city_id__4AB81AF0" FromRole="cities" ToRole="ads" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="first_name" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+    <Property Name="last_name" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+    <Property Name="second_name" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+    <Property Name="profit" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="ads" Relationship="Self.FK__ads__user_id__4BAC3F29" FromRole="users" ToRole="ads" />
+  </EntityType>
+  <Association Name="FK__ads__ad_category__4CA06362">
+    <End Role="ad_categories" Type="Self.ad_categories" Multiplicity="1" />
+    <End Role="ads" Type="Self.ads" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ad_categories">
+        <PropertyRef Name="ad_category_id" />
+      </Principal>
+      <Dependent Role="ads">
+        <PropertyRef Name="ad_category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ads__ad_status_i__4E88ABD4">
+    <End Role="ad_statuses" Type="Self.ad_statuses" Multiplicity="1" />
+    <End Role="ads" Type="Self.ads" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ad_statuses">
+        <PropertyRef Name="ad_status_id" />
+      </Principal>
+      <Dependent Role="ads">
+        <PropertyRef Name="ad_status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ads__ad_type_id__4D94879B">
+    <End Role="ad_types" Type="Self.ad_types" Multiplicity="1" />
+    <End Role="ads" Type="Self.ads" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ad_types">
+        <PropertyRef Name="ad_type_id" />
+      </Principal>
+      <Dependent Role="ads">
+        <PropertyRef Name="ad_type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ads__city_id__4AB81AF0">
+    <End Role="cities" Type="Self.cities" Multiplicity="1" />
+    <End Role="ads" Type="Self.ads" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cities">
+        <PropertyRef Name="city_id" />
+      </Principal>
+      <Dependent Role="ads">
+        <PropertyRef Name="city_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ads__user_id__4BAC3F29">
+    <End Role="users" Type="Self.users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ads" Type="Self.ads" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="ads">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ad_categories" EntityType="Self.ad_categories" />
+    <EntitySet Name="ad_statuses" EntityType="Self.ad_statuses" />
+    <EntitySet Name="ad_types" EntityType="Self.ad_types" />
+    <EntitySet Name="ads" EntityType="Self.ads" />
+    <EntitySet Name="cities" EntityType="Self.cities" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="users" EntityType="Self.users" />
+    <AssociationSet Name="FK__ads__ad_category__4CA06362" Association="Self.FK__ads__ad_category__4CA06362">
+      <End Role="ad_categories" EntitySet="ad_categories" />
+      <End Role="ads" EntitySet="ads" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ads__ad_status_i__4E88ABD4" Association="Self.FK__ads__ad_status_i__4E88ABD4">
+      <End Role="ad_statuses" EntitySet="ad_statuses" />
+      <End Role="ads" EntitySet="ads" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ads__ad_type_id__4D94879B" Association="Self.FK__ads__ad_type_id__4D94879B">
+      <End Role="ad_types" EntitySet="ad_types" />
+      <End Role="ads" EntitySet="ads" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ads__city_id__4AB81AF0" Association="Self.FK__ads__city_id__4AB81AF0">
+      <End Role="cities" EntitySet="cities" />
+      <End Role="ads" EntitySet="ads" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ads__user_id__4BAC3F29" Association="Self.FK__ads__user_id__4BAC3F29">
+      <End Role="users" EntitySet="users" />
+      <End Role="ads" EntitySet="ads" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

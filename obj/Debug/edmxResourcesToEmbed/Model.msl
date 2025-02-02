@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище NikitoModelContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="ad_categories">
+      <EntityTypeMapping TypeName="NikitoModel.ad_categories">
+        <MappingFragment StoreEntitySet="ad_categories">
+          <ScalarProperty Name="ad_category_id" ColumnName="ad_category_id" />
+          <ScalarProperty Name="ad_category_name" ColumnName="ad_category_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ad_statuses">
+      <EntityTypeMapping TypeName="NikitoModel.ad_statuses">
+        <MappingFragment StoreEntitySet="ad_statuses">
+          <ScalarProperty Name="ad_status_id" ColumnName="ad_status_id" />
+          <ScalarProperty Name="ad_status_name" ColumnName="ad_status_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ad_types">
+      <EntityTypeMapping TypeName="NikitoModel.ad_types">
+        <MappingFragment StoreEntitySet="ad_types">
+          <ScalarProperty Name="ad_type_id" ColumnName="ad_type_id" />
+          <ScalarProperty Name="ad_type_name" ColumnName="ad_type_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ads">
+      <EntityTypeMapping TypeName="NikitoModel.ads">
+        <MappingFragment StoreEntitySet="ads">
+          <ScalarProperty Name="ad_id" ColumnName="ad_id" />
+          <ScalarProperty Name="publish_date" ColumnName="publish_date" />
+          <ScalarProperty Name="city_id" ColumnName="city_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="ad_category_id" ColumnName="ad_category_id" />
+          <ScalarProperty Name="ad_type_id" ColumnName="ad_type_id" />
+          <ScalarProperty Name="ad_status_id" ColumnName="ad_status_id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="ad_price" ColumnName="ad_price" />
+          <ScalarProperty Name="ad_image" ColumnName="ad_image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cities">
+      <EntityTypeMapping TypeName="NikitoModel.cities">
+        <MappingFragment StoreEntitySet="cities">
+          <ScalarProperty Name="city_id" ColumnName="city_id" />
+          <ScalarProperty Name="city_name" ColumnName="city_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="NikitoModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="NikitoModel.users">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="second_name" ColumnName="second_name" />
+          <ScalarProperty Name="profit" ColumnName="profit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

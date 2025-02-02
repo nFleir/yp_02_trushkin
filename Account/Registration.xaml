@@ -1,0 +1,33 @@
+﻿<Page x:Class="yp_02_trushkin.Account.Registration"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:yp_02_trushkin.Account"
+      mc:Ignorable="d" 
+            d:DesignHeight="720" d:DesignWidth="1280"
+      Title="Registation" Background="White">
+
+    <Grid>
+        <StackPanel Orientation="Vertical" Margin="0,60,0,60" Width="500" Height="350" >
+            <TextBlock Text="Регистрация" Style="{StaticResource TextBlocks}" FontSize="18" FontWeight="Bold" Foreground="DarkSlateGray" 
+               HorizontalAlignment="Center" Margin="0,0,0,10"/>
+            <TextBlock Text="Логин" Style="{StaticResource TextBlocks}" Height="17"  Margin="0,0,0,10"/>
+            <TextBox x:Name="Login_Box" Style="{StaticResource TextBox}" Margin="0,0,0,10" />
+            
+            <TextBlock Text="Пароль" Style="{StaticResource TextBlocks}" Height="17" Margin="0,0,0,10" />
+            <TextBox Name="Password_Box" Style="{StaticResource TextBox}"  Margin="0,0,0,10" />
+
+
+            <TextBlock Text="Фамилия" Style="{StaticResource TextBlocks}" Margin="0,0,0,10" />
+            <TextBox Name="Surname_Box" Style="{StaticResource TextBox}" Margin="0,0,0,10"/>
+            
+            <TextBlock Text="Имя" Style="{StaticResource TextBlocks}" Margin="0,0,0,10" />
+            <TextBox Name="Name_Box" Style="{StaticResource TextBox}" Margin="0,0,0,10" />
+
+            <Button x:Name="Registration_Box" Content="Зарегистрироваться" Style="{StaticResource Buttons}" Height="30" 
+                    Margin="0,0,0,10" Background="Wheat" Click="Registration_Box_Click"  FontWeight="Bold"/>
+        </StackPanel>
+        <Frame Name="RegFrame" />
+    </Grid>
+</Page>
