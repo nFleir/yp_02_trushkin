@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1058bfecded549acabf7a75f66a9dc7d" Name="Diagram1">
+      <Diagram DiagramId="a3634689266b458bab74d62d96c62a3f" Name="Diagram1">
         <EntityTypeShape EntityType="NikitoModel.ad_categories" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="NikitoModel.ad_statuses" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="NikitoModel.ad_types" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />

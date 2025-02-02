@@ -33,7 +33,7 @@
     <Property Name="ad_type_id" Type="int" Nullable="false" />
     <Property Name="ad_status_id" Type="int" Nullable="false" />
     <Property Name="title" Type="nvarchar" MaxLength="200" Nullable="false" />
-    <Property Name="description" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="description" Type="nvarchar" MaxLength="500" Nullable="false" />
     <Property Name="ad_price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
     <Property Name="ad_image" Type="nvarchar" MaxLength="255" />
   </EntityType>
@@ -63,7 +63,6 @@
     <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="first_name" Type="nvarchar" MaxLength="70" />
     <Property Name="last_name" Type="nvarchar" MaxLength="70" />
-    <Property Name="second_name" Type="nvarchar" MaxLength="70" />
     <Property Name="profit" Type="decimal" Precision="10" Scale="2" />
   </EntityType>
   <Association Name="FK__ads__ad_category__4CA06362">

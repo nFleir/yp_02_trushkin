@@ -38,7 +38,6 @@ namespace yp_02_trushkin.Account
             string password = Password_Box.Text;
             string name = Name_Box.Text;
             string surname = Surname_Box.Text;
-            //string patronymic = Patronymic_Box.Text;
 
             try
             {
@@ -63,7 +62,6 @@ namespace yp_02_trushkin.Account
                     password = password,
                     first_name = name,
                     last_name = surname,
-                    //second_name = patronymic,
                 };
                 db.users.Add(user);
                 db.SaveChanges();

@@ -69,7 +69,6 @@
           <ScalarProperty Name="password" ColumnName="password" />
           <ScalarProperty Name="first_name" ColumnName="first_name" />
           <ScalarProperty Name="last_name" ColumnName="last_name" />
-          <ScalarProperty Name="second_name" ColumnName="second_name" />
           <ScalarProperty Name="profit" ColumnName="profit" />
         </MappingFragment>
       </EntityTypeMapping>
