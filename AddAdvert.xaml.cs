@@ -22,9 +22,10 @@ namespace yp_02_trushkin
     public partial class AddAdvert : Page
     {
 
-        private readonly string pricePattern = @"^\d+$";
-        private readonly string titlePattern = @"^[a-zA-Zа-яА-ЯёЁ0-9\s,.'-]+$";
-        private readonly string descriptionPattern = @"^[a-zA-Zа-яА-ЯёЁ0-9\s,.'-]+$";
+        private static Regex PriceReg = new Regex(@"^\d+$");
+        private static Regex TitleReg = new Regex(@"^[a-zA-Zа-яА-ЯёЁ0-9\s,.'-]+$");
+        private static Regex DescriptionReg = new Regex(@"^[a-zA-Zа-яА-ЯёЁ0-9\s,.'-]+$");
+
 
         int CurrentUserId;
         //CurrentUserId = (int) Application.Current.Resources["CurrentUserID"];
@@ -142,19 +143,19 @@ namespace yp_02_trushkin
                     return;
                 }
 
-                if (!Regex.IsMatch(TitleTextBox.Text, titlePattern))
+                if (!TitleReg.IsMatch(TitleTextBox.Text))
                 {
                     MessageBox.Show("Название объявления должно содержать только русские и английские буквы, цифры и пробелы.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
-                if (!Regex.IsMatch(DescriptionTextBox.Text, descriptionPattern))
+                if (!DescriptionReg.IsMatch(DescriptionTextBox.Text))
                 {
                     MessageBox.Show("Описание объявления должно содержать только русские и английские буквы, цифры и пробелы.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
-                if (!Regex.IsMatch(PriceTextBox.Text, pricePattern))
+                if (!PriceReg.IsMatch(PriceTextBox.Text))
                 {
                     MessageBox.Show("Цена должна быть целым числом без запятой.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
